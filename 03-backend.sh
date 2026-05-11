@@ -42,10 +42,10 @@ CHECK_ROOT(){
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
-dnf modules disable nodejs -y &>>$LOG_FILE_NAME 
+dnf module disable nodejs -y &>>$LOG_FILE_NAME 
 VALIDATE $? "Disabling NodeJS module"
 
-dnf module enable noejs:20 -y &>>$LOG_FILE_NAME 
+dnf module enable nodejs:20 -y &>>$LOG_FILE_NAME 
 VALIDATE $? "Enabling NodeJS 20 module"
 
 dnf install nodejs -y &>>$LOG_FILE_NAME 
