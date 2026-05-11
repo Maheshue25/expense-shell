@@ -81,10 +81,10 @@ VALIDATE $? "Setting up MySQL schema"
 systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "Reloading systemd daemon"  
 
-systemctl enable backend.service &>>$LOG_FILE_NAME
+systemctl enable backend &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling backend systemd service"
 
-systemctl start backend.service &>>$LOG_FILE_NAME 
+systemctl start backend &>>$LOG_FILE_NAME 
 VALIDATE $? "Starting backend systemd service"
 
 
