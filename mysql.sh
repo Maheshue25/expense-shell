@@ -14,7 +14,7 @@ TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S") # Get the current timestamp
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE.log" # Define the log file name with path
 
 VALIDATE(){
-    if [ $1 -ne 0]
+    if [ $1 -ne 0 ]
     then
         echo -e "${R}Error: $2${N}" # Print error message in red
         echo "$TIMESTAMP - Error: $2" >> $LOG_FILE_NAME # Log the error message with timestamp
