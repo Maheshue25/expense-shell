@@ -47,7 +47,7 @@ VALIDATE $? "MySQL service enabled" # Validate the service enablement
 systemctl start mysqld >> $LOG_FILE_NAME 2>&1 # Start MySQL service and log the output
 VALIDATE $? "MySQL service started" # Validate the service start
 
-mysql -h mysql.erothi.online -u root -pExpenseApp@1 -e "show databases;" >> $LOG_FILE_NAME 2>&1 # Test the MySQL connection by showing databases and log the output
+mysql -h mysql.erothi.online -u root -pExpenseApp@1 -e "show databases;" #
 
 if [ $? -ne 0 ]
 then
