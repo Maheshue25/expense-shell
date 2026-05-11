@@ -47,5 +47,13 @@ VALIDATE $? "MySQL service enabled" # Validate the service enablement
 systemctl start mysqld >> $LOG_FILE_NAME 2>&1 # Start MySQL service and log the output
 VALIDATE $? "MySQL service started" # Validate the service start
 
-mysql_secure_installation --set-root-password ExpenseApp@1 >> $LOG_FILE_NAME 2>&1 # Run the MySQL secure installation script to set the root password and log the output
-VALIDATE $? "Setting Root Password" # Validate the secure installation  
+mysql -h mysql.erothi.online -u root -pExpenseApp@1 -e "show databases;" >> $LOG_FILE_NAME 2>&1 # Test the MySQL connection by showing databases and log the output
+
+if [ $? -ne 0 ]
+then
+    echo "MySQL Root Password Not Set Properly" >> $LOG_FILE_NAME # Log the error message if the connection test fails
+    mysql_secure_installation --set-root-pass=ExpenseApp@1 >> $LOG_FILE_NAME 2>&1 # Set the root password using mysql_secure_installation and log the output
+    VALIDATE $? "Setting Root Password" # Validate the secure installation again to ensure the root password is set properly
+else
+    echo "MySQL Root Password is already set properly" >> $LOG_FILE_NAME # Log the success message if the connection test is successful
+fi
